@@ -228,7 +228,7 @@
                 <version>${freemarker.version}</version>
             </dependency>
 
-            <!-- 时间操作组件 -->
+            <!-- 时间/日期操作组件 -->
             <dependency>
                 <groupId>joda-time</groupId>
                 <artifactId>joda-time</artifactId>
