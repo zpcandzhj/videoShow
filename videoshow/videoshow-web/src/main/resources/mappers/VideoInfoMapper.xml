@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zpc.videoshow.dao.VideoInfoMapper">
+    <resultMap id="BaseResultMap" type="com.zpc.videoshow.pojo.VideoInfo">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="video_name" jdbcType="VARCHAR" property="videoName"/>
+        <result column="video_cover_path" jdbcType="VARCHAR" property="videoCoverPath"/>
+        <result column="video_html_url" jdbcType="VARCHAR" property="videoHtmlUrl"/>
+        <result column="video_type" jdbcType="INTEGER" property="videoType"/>
+        <result column="video_show_flag" jdbcType="INTEGER" property="videoShowFlag"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, video_name, video_cover_path, video_html_url, video_type, video_show_flag
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from video_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="selectAll"
+            resultType="com.zpc.videoshow.pojo.VideoInfo">
+    select a.id as id,a.video_name as videoName, a.video_html_url as videoHtmlUrl ,a.video_cover_path as videoCoverPath, a.video_show_flag as videoShowFlag
+    , b.type_name as typeName
+    from video_info  as a  inner join video_type as b  on a.video_type=b.id
+  </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from video_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.zpc.videoshow.pojo.VideoInfo">
+    insert into video_info (id, video_name, video_cover_path,
+      video_html_url, video_type, video_show_flag
+      )
+    values (#{id,jdbcType=INTEGER}, #{videoName,jdbcType=VARCHAR}, #{videoCoverPath,jdbcType=VARCHAR},
+      #{videoHtmlUrl,jdbcType=VARCHAR}, #{videoType,jdbcType=INTEGER}, #{videoShowFlag,jdbcType=INTEGER}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.zpc.videoshow.pojo.VideoInfo">
+        insert into video_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="videoName != null">
+                video_name,
+            </if>
+            <if test="videoCoverPath != null">
+                video_cover_path,
+            </if>
+            <if test="videoHtmlUrl != null">
+                video_html_url,
+            </if>
+            <if test="videoType != null">
+                video_type,
+            </if>
+            <if test="videoShowFlag != null">
+                video_show_flag,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="videoName != null">
+                #{videoName,jdbcType=VARCHAR},
+            </if>
+            <if test="videoCoverPath != null">
+                #{videoCoverPath,jdbcType=VARCHAR},
+            </if>
+            <if test="videoHtmlUrl != null">
+                #{videoHtmlUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="videoType != null">
+                #{videoType,jdbcType=INTEGER},
+            </if>
+            <if test="videoShowFlag != null">
+                #{videoShowFlag,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zpc.videoshow.pojo.VideoInfo">
+        update video_info
+        <set>
+            <if test="videoName != null">
+                video_name = #{videoName,jdbcType=VARCHAR},
+            </if>
+            <if test="videoCoverPath != null">
+                video_cover_path = #{videoCoverPath,jdbcType=VARCHAR},
+            </if>
+            <if test="videoHtmlUrl != null">
+                video_html_url = #{videoHtmlUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="videoType != null">
+                video_type = #{videoType,jdbcType=INTEGER},
+            </if>
+            <if test="videoShowFlag != null">
+                video_show_flag = #{videoShowFlag,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zpc.videoshow.pojo.VideoInfo">
+    update video_info
+    set video_name = #{videoName,jdbcType=VARCHAR},
+      video_cover_path = #{videoCoverPath,jdbcType=VARCHAR},
+      video_html_url = #{videoHtmlUrl,jdbcType=VARCHAR},
+      video_type = #{videoType,jdbcType=INTEGER},
+      video_show_flag = #{videoShowFlag,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

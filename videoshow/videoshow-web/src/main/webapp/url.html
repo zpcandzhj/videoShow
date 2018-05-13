@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <title>url.html</title>
+
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+</head>
+
+<body>
+<a href="http://localhost:8080/videoshow/test01">访问test01能</a>
+<hr/>
+<!--
+    以 / 开始 表示使用的是 绝对路径
+    / 表示 http://ip:端口号/
+    /videoshow/test01  表示   http://ip:端口号/videoshow/test01
+ -->
+<a href="/videoshow/test01">访问test01 能</a><br/>
+<!--
+    相对路径: 当前路径的父路径 + 相对路径
+
+    当前路径 : http://localhost:7777/videoshow/url.html
+    当前路径的父路径: http://localhost:7777/videoshow/
+    相对路径 : http://localhost:7777/videoshow/videoshow/test01
+ -->
+<a href="videoshow/test01">访问test01  不能</a><br/>
+
+<!--
+    以 / 开始 表示使用的是 绝对路径
+    / 表示 http://ip:端口号/
+    /test01	表示		http://ip:端口号/test01
+ -->
+<a href="/test01">访问test01 不能</a><br/>
+<!--
+    相对路径: 当前路径的父路径 + 相对路径
+
+    当前路径 : http://localhost:7777/videoshow/url.html
+    当前路径的父路径: http://localhost:7777/videoshow/
+    相对路径 : http://localhost:7777/videoshow/test01
+ -->
+<a href="test01">访问test01  能</a><br/>
+</body>
+</html>
