@@ -4,7 +4,7 @@
 <generatorConfiguration>
     <!-- 引入配置文件 -->
     <properties resource="generator.properties"/>
-    <!-- 数据库驱动包位置 -->
+    <!-- 数据库驱动包位置,路径请不要有中文-->
     <!-- <classPathEntry location="D:\software\lib\mysql-connector-java-5.1.21.jar" /> -->
     <classPathEntry location="${generator.location}"/>
     <!-- 一个数据库一个context-->
